@@ -1,4 +1,4 @@
-import { FilehubIcon } from "@/styles/icon/FileHubIcon";
+import { FilehubIcon } from "./ui/FileHubIcon";
 
 export const LogoStyled = () => {
   return (

@@ -1,4 +1,4 @@
-import { formatTimestampDate } from "../helpers/Date";
+import { formatTimestampDate } from "../utils/Date";
 
 describe("FormatTimestampDate function", () => {
   it("formats a timestamp for 3 mars 2021", () => {

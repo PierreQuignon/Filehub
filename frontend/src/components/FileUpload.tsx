@@ -1,10 +1,4 @@
-import {
-  Button,
-  Typography,
-  InputAdornment,
-  TextField,
-  Box,
-} from "@mui/material";
+import { Button, Typography, InputAdornment, Box } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
@@ -17,9 +11,9 @@ import Slide from "@mui/material/Slide";
 import axios from "axios";
 import { dataBaseFile } from "./FileUploaded";
 import { toast } from "react-toastify";
-import { API_URL } from "@/config";
 import { useDropzone } from "react-dropzone";
-import { showLogo } from "@/helpers/fileLogo";
+import { showLogo } from "./ui/fileLogo";
+import { API_URL } from "../../config-url";
 
 interface fileUploadProps {
   setFileUploaded: (fun: dataBaseFile | undefined) => void;

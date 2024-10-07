@@ -7,14 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 import styled from "styled-components";
-import { pxToRem } from "@/styles/cssTheme";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { mutationResetPassword } from "@/graphql/mutationResetPassword";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FilehubIcon } from "@/styles/icon/FileHubIcon";
+import { FilehubIcon } from "./ui/FileHubIcon";
 
 const StyledCard = styled(Card)`
   margin: auto;
@@ -31,14 +30,14 @@ const StyledCard = styled(Card)`
 const StyledTextField = styled(TextField)`
   & .MuiOutlinedInput-root {
     border-radius: 20px;
-    min-height: ${pxToRem(56)};
+    min-height: 56px;
   }
 `;
 
 const StyledButton = styled(Button)`
   &.MuiButtonBase-root {
-    margin-top: ${pxToRem(30)};
-    min-height: ${pxToRem(56)};
+    margin-top: 30px;
+    min-height: 56px;
     border-radius: 30px;
     background: linear-gradient(
       90deg,
@@ -102,7 +101,7 @@ export default function VerificationInput({ onSubmit }: any) {
         justifyContent="center"
         height="100vh"
       >
-        <FilehubIcon style={{ width: `${pxToRem(217)}`, height: "auto" }} />
+        <FilehubIcon style={{ width: "217px", height: "auto" }} />
         <StyledCard variant="outlined">
           <CardContent>
             <Typography variant="h5" align="center" gutterBottom>

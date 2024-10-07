@@ -5,20 +5,10 @@ import styled from "styled-components";
 import DownloadIcon from "@mui/icons-material/Download";
 import { useQuery } from "@apollo/client";
 import { getFileByUniqueName } from "@/graphql/getFileByUniqueName";
-import { API_URL } from "@/config";
 import { FileInfo, FileUploadContent } from "./FileUpload";
-import { showLogo } from "@/helpers/fileLogo";
 import { theme } from "@/styles/theme";
-
-const StyledCard = styled(Card)`
-  width: 80%;
-  max-width: 600px;
-  border-radius: 15px !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+import { showLogo } from "./ui/fileLogo";
+import { API_URL } from "../../config-url";
 
 const TableContainerWrapper = styled.div`
   border-radius: 15px;
@@ -73,7 +63,7 @@ interface FileDownloadProps {
 }
 
 const FileDownload: React.FC<FileDownloadProps> = ({ fileName }) => {
-  const { loading, error, data } = useQuery(getFileByUniqueName, {
+  const { data } = useQuery(getFileByUniqueName, {
     variables: { uniqueName: fileName },
     skip: !fileName,
   });
@@ -118,26 +108,32 @@ const FileDownload: React.FC<FileDownloadProps> = ({ fileName }) => {
             Votre fichier est à portée de clic !
           </Typography>
           {data && data.getFile && (
-            <Box sx={{
-              position: 'relative',
-              display: 'flex',
-              overflow: 'visible',
-              marginBottom: 2
-            }}>
-              <Box sx={{
-                position: 'absolute',
-                top: '50%',
-                left: -48,
-                transform: 'translateY(-50%)',
-                height: 36,
-                width: 36
-              }}>
+            <Box
+              sx={{
+                position: "relative",
+                display: "flex",
+                overflow: "visible",
+                marginBottom: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: -48,
+                  transform: "translateY(-50%)",
+                  height: 36,
+                  width: 36,
+                }}
+              >
                 {showLogo(data.getFile.mimeType, 36)}
               </Box>
-              <Typography sx={{
-                textDecoration: 'underline',
-                color: theme.palette.primary.main
-              }}>
+              <Typography
+                sx={{
+                  textDecoration: "underline",
+                  color: theme.palette.primary.main,
+                }}
+              >
                 {data.getFile.originalName}
               </Typography>
             </Box>

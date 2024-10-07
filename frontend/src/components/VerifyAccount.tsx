@@ -6,8 +6,8 @@ import { mutationVerifyAccount } from "@/graphql/mutationVerifyAccount";
 import { Typography, Box, CircularProgress } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { FilehubIcon } from "@/styles/icon/FileHubIcon";
 import { theme } from "@/styles/theme";
+import { FilehubIcon } from "./ui/FileHubIcon";
 
 export default function VerifyAccount() {
   const router = useRouter();
