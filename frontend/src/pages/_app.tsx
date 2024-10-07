@@ -13,8 +13,8 @@ import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
 import { queryMe } from "@/graphql/queryMe";
 import Head from "next/head";
-import { API_URL } from "@/config";
 import { ToastContainer } from "react-toastify";
+import { API_URL } from "../../config-url";
 
 const link = createHttpLink({
   uri: `${API_URL}`,

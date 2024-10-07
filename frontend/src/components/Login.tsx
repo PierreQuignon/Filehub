@@ -1,6 +1,4 @@
-import { FilehubIcon } from "@/styles/icon/FileHubIcon";
 import { theme } from "@/styles/theme";
-import { pxToRem } from "@/styles/cssTheme";
 import { Box, Button, IconButton, Tab, Tabs, TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
@@ -12,19 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { mutationSendVerifCode } from "@/graphql/mutationSendVerifCode";
-import { palette } from "@mui/system";
+import { FilehubIcon } from "./ui/FileHubIcon";
 
 export const TextFieldStyled = styled(TextField)`
   & .MuiOutlinedInput-root {
     border-radius: 30px;
-    min-height: ${pxToRem(56)};
+    min-height: 56px;
   }
 `;
 
 export const StyledButton = styled(Button)`
   &.MuiButtonBase-root {
-    margin-top: ${pxToRem(30)};
-    min-height: ${pxToRem(56)};
+    margin-top: 30px;
+    min-height: 56px;
     border-radius: 30px;
     background: linear-gradient(
       90deg,
@@ -42,8 +40,8 @@ const CustomTabs = styled(Tabs)`
     justify-content: space-between;
     border-radius: 30px;
     border: 1px solid ${theme.palette.primary.light};
-    min-height: ${pxToRem(56)};
-    margin-bottom: ${pxToRem(30)};
+    min-height: 56px;
+    margin-bottom: 30;
   }
   & .MuiTabs-indicator {
     display: none;
@@ -52,7 +50,7 @@ const CustomTabs = styled(Tabs)`
 
 const CustomTab = styled(Tab)`
   &.MuiButtonBase-root {
-    min-width: ${pxToRem(194)};
+    min-width: 194px;
     border-radius: 30px;
     transition: color 0.3s;
   }
@@ -189,7 +187,7 @@ export default function Login(): React.ReactNode {
       justifyContent="center"
       height="100vh"
     >
-      <FilehubIcon style={{ width: `${pxToRem(217)}`, height: "auto" }} />
+      <FilehubIcon style={{ width: "217px", height: "auto" }} />
       <Box
         display="flex"
         flexDirection="column"
@@ -198,9 +196,9 @@ export default function Login(): React.ReactNode {
         border={1}
         borderColor={theme.palette.primary.light}
         borderRadius="30px"
-        width={pxToRem(547)}
-        height={pxToRem(550)}
-        marginTop={pxToRem(30)}
+        width="547px"
+        height="550px"
+        marginTop="30px"
       >
         <CustomTabs
           value={activeTab}
@@ -211,7 +209,7 @@ export default function Login(): React.ReactNode {
           <CustomTab label="S'inscrire" />
         </CustomTabs>
         <form onSubmit={handleSubmit}>
-          <Box display="flex" flexDirection="column" minWidth={pxToRem(388)}>
+          <Box display="flex" flexDirection="column" minWidth="388px">
             {activeTab === 0 && (
               <>
                 <TextFieldStyled
