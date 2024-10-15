@@ -1,7 +1,7 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import FileDownload from "@/components/FileDownload";
-import Header from "@/layout/header";
+import Header from "@/components/layout/header";
 import { useRouter } from "next/router";
 import { MainContent } from "..";
 

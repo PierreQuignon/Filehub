@@ -1,10 +1,12 @@
-import FileUpload from "../components/FileUpload";
 import FileUploaded, { dataBaseFile } from "@/components/FileUploaded";
-import Header from "@/layout/header";
-import { MainContent } from ".";
+import Header from "@/components/layout/header";
+
 import { useState } from "react";
 
-function FileUploadPage(): React.ReactNode {
+import FileUpload from "@/components/FileUpload";
+import { MainContent } from ".";
+
+const FileUploadPage = () => {
   const [fileUploaded, setFileUploaded] = useState<dataBaseFile | undefined>(
     undefined,
   );
@@ -21,6 +23,6 @@ function FileUploadPage(): React.ReactNode {
       </MainContent>
     </>
   );
-}
+};
 
 export default FileUploadPage;

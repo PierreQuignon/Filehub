@@ -36,7 +36,7 @@ const publicPages = [
   /^\/verify-account(\/.*)?$/,
 ];
 
-function Auth(props: { children: ReactNode }) {
+const Auth = (props: { children: ReactNode }) => {
   const { data, loading, error, refetch } = useQuery(queryMe, {
     fetchPolicy: "no-cache",
   });
@@ -75,7 +75,7 @@ function Auth(props: { children: ReactNode }) {
   } else {
     return props.children;
   }
-}
+};
 
 const themeResponsive = responsiveFontSizes(theme);
 
