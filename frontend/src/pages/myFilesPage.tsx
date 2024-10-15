@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "@/layout/header";
+import Header from "@/components/layout/header";
 import FileList from "@/components/FileList";
-import { MainContent } from ".";
+
 import UploadNewFile from "@/components/UploadNewFile";
 import { Stack, Typography, useTheme } from "@mui/material";
+import { MainContent } from ".";
 
-const MyFiles: React.FC = () => {
+const MyFilesPage = () => {
   const theme = useTheme();
 
   return (
@@ -34,4 +35,4 @@ const MyFiles: React.FC = () => {
   );
 };
 
-export default MyFiles;
+export default MyFilesPage;

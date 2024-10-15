@@ -1,5 +1,7 @@
 import Login from "@/components/Login";
 
-export default function LoginPage(): React.ReactNode {
+const LoginPage = () => {
   return <Login />;
-}
+};
+
+export default LoginPage;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Login from "@/components/Login";
 import FileUploadPage from "./fileUploadPage";
 
 export const MainContent = styled.div`
@@ -14,6 +13,8 @@ export const MainContent = styled.div`
   height: calc(100vh - 66px);
 `;
 
-export default function Home(): React.ReactNode {
+const Home = () => {
   return <FileUploadPage />;
-}
+};
+
+export default Home;

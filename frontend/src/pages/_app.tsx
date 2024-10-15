@@ -13,8 +13,8 @@ import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
 import { queryMe } from "@/graphql/queryMe";
 import Head from "next/head";
-import { API_URL } from "@/config";
 import { ToastContainer } from "react-toastify";
+import { API_URL } from "../../config-url";
 
 const link = createHttpLink({
   uri: `${API_URL}`,
@@ -36,7 +36,7 @@ const publicPages = [
   /^\/verify-account(\/.*)?$/,
 ];
 
-function Auth(props: { children: ReactNode }) {
+const Auth = (props: { children: ReactNode }) => {
   const { data, loading, error, refetch } = useQuery(queryMe, {
     fetchPolicy: "no-cache",
   });
@@ -75,7 +75,7 @@ function Auth(props: { children: ReactNode }) {
   } else {
     return props.children;
   }
-}
+};
 
 const themeResponsive = responsiveFontSizes(theme);
 

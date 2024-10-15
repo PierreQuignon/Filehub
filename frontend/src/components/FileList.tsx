@@ -17,12 +17,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { formatTimestampDate } from "@/helpers/Date";
-import { API_URL } from "@/config";
+import { formatTimestampDate } from "@/utils/Date";
 import { mutationDeleteFile } from "@/graphql/mutationDeleteFile";
 import { queryMe } from "@/graphql/queryMe";
 import { getUserFiles } from "@/graphql/getUserFiles";
-import { showLogo } from "@/helpers/fileLogo";
+import { showLogo } from "./ui/fileLogo";
+import { API_URL } from "../../config-url";
 
 interface File {
   id: string;
@@ -198,13 +198,15 @@ const FileList = () => {
       resizable: false,
       sortable: false,
       renderCell: (params) => (
-        <Box sx={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+        <Box
+          sx={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {showLogo(params.row.mimeType, 24)}
         </Box>
       ),
