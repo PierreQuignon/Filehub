@@ -18,9 +18,9 @@ import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { formatTimestampDate } from "@/utils/Date";
-import { mutationDeleteFile } from "@/graphql/mutationDeleteFile";
+import { mutationDeleteFile } from "@/features/files/api/mutationDeleteFile";
 import { queryMe } from "@/graphql/queryMe";
-import { getUserFiles } from "@/graphql/getUserFiles";
+import { getUserFiles } from "@/features/files/api/getUserFiles";
 import { showLogo } from "./ui/fileLogo";
 import { API_URL } from "../../config-url";
 

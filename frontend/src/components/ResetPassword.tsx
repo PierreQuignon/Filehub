@@ -10,7 +10,7 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
-import { mutationResetPassword } from "@/graphql/mutationResetPassword";
+import { mutationResetPassword } from "@/features/auth/api/mutationResetPassword";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FilehubIcon } from "./ui/FileHubIcon";

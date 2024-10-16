@@ -3,13 +3,13 @@ import { Box, Button, IconButton, Tab, Tabs, TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import { useMutation } from "@apollo/client";
-import { mutationSignup } from "@/graphql/mutationSignup";
-import { mutationSignin } from "@/graphql/mutationSignin";
+import { mutationSignup } from "@/features/auth/api/mutationSignup";
+import { mutationSignin } from "@/features/auth/api/mutationSignin";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { mutationSendVerifCode } from "@/graphql/mutationSendVerifCode";
+import { mutationSendVerifCode } from "@/features/auth/api/mutationSendVerifCode";
 import { FilehubIcon } from "./ui/FileHubIcon";
 
 export const TextFieldStyled = styled(TextField)`
@@ -260,7 +260,7 @@ export default function Login(): React.ReactNode {
                   </IconButton>
                 </Box>
                 <Button
-                  onClick={() => router.push("/forgot-password")}
+                  onClick={() => router.push("/forgotPasswordPage")}
                   sx={{ mt: 1, ml: 1, color: theme.palette.secondary.main }}
                 >
                   Mot de passe oublié ?

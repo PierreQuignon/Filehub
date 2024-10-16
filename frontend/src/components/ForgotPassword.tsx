@@ -9,7 +9,7 @@ import {
 import styled from "styled-components";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { mutationforgotPassword } from "@/graphql/mutationForgotPassword";
+import { mutationforgotPassword } from "@/features/auth/mutationForgotPassword";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { FilehubIcon } from "./ui/FileHubIcon";
@@ -75,7 +75,7 @@ export default function EmailInput() {
   };
 
   const handleCancel = () => {
-    router.push("/login");
+    router.push("/loginPage");
   };
 
   return (

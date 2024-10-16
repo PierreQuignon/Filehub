@@ -1,5 +1,5 @@
-import { getUserFiles } from "@/graphql/getUserFiles";
-import { mutationDeleteFile } from "@/graphql/mutationDeleteFile";
+import { getUserFiles } from "@/features/files/api/getUserFiles";
+import { mutationDeleteFile } from "@/features/files/api/mutationDeleteFile";
 import { queryMe } from "@/graphql/queryMe";
 
 const fileSet1 = [

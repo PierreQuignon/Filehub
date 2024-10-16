@@ -26,14 +26,6 @@ docker compose up --build
 npm run dev
 ```
 
-### Contributors
-
-- [Daryl-Ch](https://github.com/Daryl-Ch)
-- [FlavinouTheOne](https://github.com/FlavinouTheOne)
-- [PierreQuignon](https://github.com/PierreQuignon)
-- [remi59800](https://github.com/remi59800)
-- [nguyen-tt](https://github.com/nguyen-tt)
-
 ### Launching backend integration tests with jest :
 
 - Open a terminal, position yourself at the parent folder of the project and run the command: docker compose up db
@@ -45,7 +37,7 @@ npm run dev
 
 #### Contributing
 
-Before pushing a pull request, always ensure that you've checked for linting and test to maintain code quality. 
+Before pushing a pull request, always ensure that you've checked for linting and test to maintain code quality.
 
 ```
 npm run lint
@@ -68,3 +60,19 @@ or
 ```
 npm run check
 ```
+
+## Sujets à améliorer :
+
+- Intégrer un composant card
+- Intégrer un composant button
+- Améliorer le flux et le wording pour la feature de reset password
+- Mettre en place un design pour les emails
+
+## Prochaines features :
+
+- Mettre en place des traductions
+- Mettre en place Stripe
+
+## En cours :
+
+- Remettre les requêtes graphQL dans les bon dossiers API des features
