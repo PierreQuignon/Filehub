@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import PersonIcon from "@mui/icons-material/Person";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { mutationSignout } from "@/graphql/mutationSignout";
+import { mutationSignout } from "@/features/auth/api/mutationSignout";
 import { useMutation, useQuery } from "@apollo/client";
 import { queryMe } from "@/graphql/queryMe";
 import { Typography } from "@mui/material";
@@ -59,7 +59,7 @@ const Header = (): React.ReactNode => {
 
   const doSignOut = async () => {
     const { data } = await signOut();
-    router.replace("/login");
+    router.replace("/loginPage");
   };
 
   return (
@@ -67,7 +67,7 @@ const Header = (): React.ReactNode => {
       <HeaderContent>
         <LogoStyled />
         <LinksContainer>
-          <StyledLink onClick={() => router.push("/myFiles")}>
+          <StyledLink onClick={() => router.push("/myFilesPage")}>
             <Inventory2Icon />
             <Typography
               marginLeft={"5px"}

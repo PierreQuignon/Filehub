@@ -27,9 +27,9 @@ const client = new ApolloClient({
 });
 
 const publicPages = [
-  /^\/login$/,
+  /^\/loginPage$/,
   /^\/downloads(\/.*)?$/,
-  /^\/forgot-password$/,
+  /^\/forgotPasswordPage$/,
   /^\/reset-password$/,
   /^\/reset-password(\/.*)?$/,
   /^\/verify-account$/,
@@ -53,12 +53,12 @@ const Auth = (props: { children: ReactNode }) => {
           //page privée
           if (!data && !loading) {
             //pas connecté
-            router.replace("/login");
+            router.replace("/loginPage");
           }
         }
       } catch (e) {
         if (!isPublicPage) {
-          router.replace("/login");
+          router.replace("/loginPage");
         }
       }
     };
@@ -79,7 +79,7 @@ const Auth = (props: { children: ReactNode }) => {
 
 const themeResponsive = responsiveFontSizes(theme);
 
-function App({ Component, pageProps }: AppProps): React.ReactNode {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={themeResponsive}>
@@ -94,7 +94,7 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
       </ThemeProvider>
     </ApolloProvider>
   );
-}
+};
 
 // Disabling SSR
 export default dynamic(() => Promise.resolve(App), { ssr: false });

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { queryMe } from "@/graphql/queryMe";
 import { useMutation, useQuery } from "@apollo/client";
-import { mutationUpdatePassword } from "@/graphql/mutationUpdatePassword";
+import { mutationUpdatePassword } from "@/features/auth/api/mutationUpdatePassword";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";

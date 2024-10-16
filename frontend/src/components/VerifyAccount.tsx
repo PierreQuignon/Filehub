@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import { useMutation } from "@apollo/client";
-import { mutationVerifyAccount } from "@/graphql/mutationVerifyAccount";
+import { mutationVerifyAccount } from "@/features/auth/api/mutationVerifyAccount";
 import { Typography, Box, CircularProgress } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";

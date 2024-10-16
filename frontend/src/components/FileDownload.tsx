@@ -4,11 +4,12 @@ import axios from "axios";
 import styled from "styled-components";
 import DownloadIcon from "@mui/icons-material/Download";
 import { useQuery } from "@apollo/client";
-import { getFileByUniqueName } from "@/graphql/getFileByUniqueName";
+
 import { FileInfo, FileUploadContent } from "./FileUpload";
 import { theme } from "@/styles/theme";
 import { showLogo } from "./ui/fileLogo";
 import { API_URL } from "../../config-url";
+import { getFileByUniqueName } from "@/features/files/api/getFileByUniqueName";
 
 const TableContainerWrapper = styled.div`
   border-radius: 15px;

@@ -87,9 +87,8 @@ export class UsersResolver {
         await this.sendEmail(
           user.email,
           "Confirmation compte FileHub",
-          `Voici votre code de confirmation du compte : ${token.token}, 
-          finalisez la création de votre compte en suivant  
-          <a href="${process.env.FRONT_ADRESS}/verify-account/${token.token}">cette URL</a>`,
+          `Finalisez la création de votre compte en suivant  
+          <a href="${process.env.FRONT_ADRESS}/verify-account/${token.token}">ce lien</a>`,
         );
         return token.token;
       } else {
@@ -131,12 +130,12 @@ export class UsersResolver {
     }
 
     // Créer un client Stripe
-    let stripeCustomerId = 'test_stripe_customer_id';
-    if (process.env.NODE_ENV !== 'test') {
-    const stripeCustomer = await stripe.customers.create({
-      email: data.email,
-    });
-    stripeCustomerId = stripeCustomer.id;
+    let stripeCustomerId = "test_stripe_customer_id";
+    if (process.env.NODE_ENV !== "test") {
+      const stripeCustomer = await stripe.customers.create({
+        email: data.email,
+      });
+      stripeCustomerId = stripeCustomer.id;
     }
 
     const newUser = new User();
@@ -293,9 +292,8 @@ export class UsersResolver {
     this.sendEmail(
       email,
       "Réinitialisation de mot de passe",
-      `Voici votre code de reset : ${token.token}, 
-      réinitialisez votre mot de passe via 
-      <a href="${process.env.FRONT_ADRESS}/reset-password/${token.token}">cette URL</a>`,
+      `Réinitialisez votre mot de passe via
+      <a href="${process.env.FRONT_ADRESS}/reset-password/${token.token}">ce lien</a>`,
     );
     return true;
   }
