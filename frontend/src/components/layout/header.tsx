@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { LogoStyled } from "@/components/LogoComponent";
 import { useRouter } from "next/router";
 import PersonIcon from "@mui/icons-material/Person";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { mutationSignout } from "@/features/auth/api/mutationSignout";
 import { useMutation, useQuery } from "@apollo/client";
-import { queryMe } from "@/graphql/queryMe";
+import { queryMe } from "@/api/queryMe";
 import { Typography } from "@mui/material";
+import { FilehubLogo } from "../ui/FileHubLogo";
 
 const HeaderContainer = styled.header`
   border-bottom: 1px solid #ccc;
@@ -65,7 +65,7 @@ const Header = (): React.ReactNode => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <LogoStyled />
+        <FilehubLogo style={{ width: "150px", height: "auto" }} />
         <LinksContainer>
           <StyledLink onClick={() => router.push("/myFilesPage")}>
             <Inventory2Icon />

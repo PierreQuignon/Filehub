@@ -11,7 +11,7 @@ import { ThemeProvider, responsiveFontSizes } from "@mui/material/styles";
 import { theme } from "@/styles/theme";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
-import { queryMe } from "@/graphql/queryMe";
+import { queryMe } from "@/api/queryMe";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import { API_URL } from "../../config-url";

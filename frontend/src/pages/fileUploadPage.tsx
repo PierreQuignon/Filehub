@@ -1,10 +1,12 @@
-import FileUploaded, { dataBaseFile } from "@/components/FileUploaded";
 import Header from "@/components/layout/header";
 
 import { useState } from "react";
 
-import FileUpload from "@/components/FileUpload";
 import { MainContent } from ".";
+import FileUploaded, {
+  dataBaseFile,
+} from "@/features/files/components/FileUploaded";
+import FileUpload from "@/features/files/components/FileUpload";
 
 const FileUploadPage = () => {
   const [fileUploaded, setFileUploaded] = useState<dataBaseFile | undefined>(

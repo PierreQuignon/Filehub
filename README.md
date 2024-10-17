@@ -75,4 +75,9 @@ npm run check
 
 ## En cours :
 
-- Remettre les requêtes graphQL dans les bon dossiers API des features
+- Créer un composant layout pour remplacer le composant FileInfo dans FileUpload.tsx
+- Implémenter ce composant dans les pages suivantes :
+  - Mes fichiers
+  - Upload d'un fichier
+  - Fichier uploadé
+  - Info perso

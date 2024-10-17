@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { mutationSendVerifCode } from "@/features/auth/api/mutationSendVerifCode";
-import { FilehubIcon } from "./ui/FileHubIcon";
+import { FilehubLogo } from "@/components/ui/FileHubLogo";
 
 export const TextFieldStyled = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -173,7 +173,6 @@ export default function Login(): React.ReactNode {
           );
         }
       } catch (e: any) {
-        console.log(e);
         toast.error(e.message);
       }
     }
@@ -187,7 +186,7 @@ export default function Login(): React.ReactNode {
       justifyContent="center"
       height="100vh"
     >
-      <FilehubIcon style={{ width: "217px", height: "auto" }} />
+      <FilehubLogo style={{ width: "217px", height: "auto" }} />
       <Box
         display="flex"
         flexDirection="column"

@@ -1,9 +1,7 @@
-import UserProfile from "../components/UserProfile";
+import UserProfile from "../features/user/components/UserProfile";
 import Header from "@/components/layout/header";
 import { MainContent } from ".";
-import { BuyButton } from "@/components/stripe/BuyButton";
-import { SettingButton } from "@/components/stripe/SettingUser";
-import { queryMe } from "@/graphql/queryMe";
+import { queryMe } from "@/api/queryMe";
 import { useQuery } from "@apollo/client";
 
 const UserProfilePage = () => {

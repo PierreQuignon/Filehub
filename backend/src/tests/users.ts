@@ -4,9 +4,9 @@ import { TestArgs, mockContext } from "./common";
 import { mutationSignup } from "./graphql/mutationSignUp";
 import { User } from "../entities/User";
 import { mutationSignin } from "./graphql/mutationSignIn";
-import { queryMe } from "./graphql/queryMe";
 import { mutationSendVerifCode } from "./graphql/mutationSendVerifCode";
 import { mutationVerifAccount } from "./graphql/mutationVerifAccount";
+import { queryMe } from "./graphql/queryMe";
 
 export default function (args: TestArgs) {
   let token = "";

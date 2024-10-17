@@ -4,12 +4,11 @@ import axios from "axios";
 import styled from "styled-components";
 import DownloadIcon from "@mui/icons-material/Download";
 import { useQuery } from "@apollo/client";
-
-import { FileInfo, FileUploadContent } from "./FileUpload";
 import { theme } from "@/styles/theme";
-import { showLogo } from "./ui/fileLogo";
-import { API_URL } from "../../config-url";
+import { docLogo } from "../../../components/ui/docLogo";
+import { API_URL } from "../../../../config-url";
 import { getFileByUniqueName } from "@/features/files/api/getFileByUniqueName";
+import { FileInfo, FileUploadContent } from "./FileUpload";
 
 const TableContainerWrapper = styled.div`
   border-radius: 15px;
@@ -87,7 +86,6 @@ const FileDownload: React.FC<FileDownloadProps> = ({ fileName }) => {
       }
 
       document.body.appendChild(link);
-      console.log(link);
       link.click();
     } catch (error) {
       console.error("Error downloading file:", error);
@@ -127,7 +125,7 @@ const FileDownload: React.FC<FileDownloadProps> = ({ fileName }) => {
                   width: 36,
                 }}
               >
-                {showLogo(data.getFile.mimeType, 36)}
+                {docLogo(data.getFile.mimeType, 36)}
               </Box>
               <Typography
                 sx={{

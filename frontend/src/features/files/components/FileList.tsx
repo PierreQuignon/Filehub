@@ -19,10 +19,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { formatTimestampDate } from "@/utils/Date";
 import { mutationDeleteFile } from "@/features/files/api/mutationDeleteFile";
-import { queryMe } from "@/graphql/queryMe";
+
 import { getUserFiles } from "@/features/files/api/getUserFiles";
-import { showLogo } from "./ui/fileLogo";
-import { API_URL } from "../../config-url";
+import { queryMe } from "@/api/queryMe";
+import { API_URL } from "../../../../config-url";
+import { docLogo } from "@/components/ui/docLogo";
 
 interface File {
   id: string;
@@ -86,7 +87,6 @@ const FileList = () => {
     },
     skip: !userId,
   });
-  console.log(data);
 
   const total = data?.filesCurrentUser?.total;
 
@@ -207,7 +207,7 @@ const FileList = () => {
             alignItems: "center",
           }}
         >
-          {showLogo(params.row.mimeType, 24)}
+          {docLogo(params.row.mimeType, 24)}
         </Box>
       ),
     },

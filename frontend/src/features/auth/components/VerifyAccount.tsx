@@ -7,7 +7,7 @@ import { Typography, Box, CircularProgress } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { theme } from "@/styles/theme";
-import { FilehubIcon } from "./ui/FileHubIcon";
+import { FilehubLogo } from "@/components/ui/FileHubLogo";
 
 export default function VerifyAccount() {
   const router = useRouter();
@@ -21,9 +21,7 @@ export default function VerifyAccount() {
       if (typeof token === "string") {
         await verifyAccount({ variables: { token: token } });
       }
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   };
 
   useEffect(() => {
@@ -49,7 +47,7 @@ export default function VerifyAccount() {
           height: "100vh",
         }}
       >
-        <FilehubIcon style={{ width: 300, height: "auto", marginBottom: 25 }} />
+        <FilehubLogo style={{ width: 300, height: "auto", marginBottom: 25 }} />
         {loading && (
           <>
             <Typography variant="h4" align="center" gutterBottom>
