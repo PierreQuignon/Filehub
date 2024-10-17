@@ -2,18 +2,18 @@ import { Button, Typography, InputAdornment, Box } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import { InputField } from "./UserProfile";
+
 import LinkIcon from "@mui/icons-material/Link";
 import FileOpenIcon from "@mui/icons-material/FileOpen";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import AddLinkIcon from "@mui/icons-material/AddLink";
 import Slide from "@mui/material/Slide";
 import axios from "axios";
-import { dataBaseFile } from "./FileUploaded";
+
 import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
-import { showLogo } from "./ui/fileLogo";
-import { API_URL } from "../../config-url";
+import { dataBaseFile } from "./FileUploaded";
+import { API_URL } from "../../../../config-url";
+import { InputField } from "@/features/user/components/UserProfile";
 
 interface fileUploadProps {
   setFileUploaded: (fun: dataBaseFile | undefined) => void;
@@ -31,18 +31,6 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   margin: 1rem 0;
-`;
-
-export const MenuIcon = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  right: 0;
-  top: 0;
-  height: 65px;
-  width: 75px;
-  border-radius: 100%;
 `;
 
 const ButtonConfirm = styled(Button)`
@@ -105,7 +93,6 @@ export const FileInfo = styled.div<FileInfoProps>`
   border-radius: 5vmin;
   width: 40vmin;
   height: max(50vmin, fit-content);
-  color: ${theme.palette.primary.main};
 `;
 
 export const FileButton = styled(Button)`
@@ -144,7 +131,7 @@ function FileUpload({ setFileUploaded }: fileUploadProps): React.ReactNode {
   const [fileName, setFileName] = useState("");
   const [fileExtension, setFileExtension] = useState("");
   const [checkAnim, setCheckAnim] = useState<boolean>(true);
-  const fileInputRef = useRef<HTMLInputElement | null>(null); // Référence à l'input
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const setFileInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileInput = e.target;
@@ -158,18 +145,6 @@ function FileUpload({ setFileUploaded }: fileUploadProps): React.ReactNode {
       setFileExtension(extension ? `.${extension}` : "");
     }
   };
-
-  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
-    useDropzone({
-      onDrop: (acceptedFiles) => {
-        const selectedFile = acceptedFiles[0];
-        const nameParts = selectedFile.name.split(".");
-        const extension = nameParts.pop();
-        setFile(selectedFile);
-        setFileName(nameParts.join("."));
-        setFileExtension(extension ? `.${extension}` : "");
-      },
-    });
 
   useEffect(() => {
     if (file) {
@@ -235,103 +210,82 @@ function FileUpload({ setFileUploaded }: fileUploadProps): React.ReactNode {
         exit: 250,
       }}
     >
-      <FileUploadContent {...getRootProps()}>
-        <FileInfo
-          isDragAccept={isDragAccept}
-          isDragReject={isDragReject}
-          onClick={(e) => e.stopPropagation()}
+      <FileInfo onClick={(e) => e.stopPropagation()}>
+        <Typography
+          variant="h6"
+          sx={{
+            marginY: "10px",
+            fontWeight: 700,
+            color: theme.palette.common.black,
+          }}
         >
-          <MenuIcon>
-            <AddLinkIcon color="primary" fontSize="large" />
-          </MenuIcon>
-          <Typography
-            variant="h6"
-            sx={{
-              marginY: "10px",
-              fontWeight: 700,
-              color: theme.palette.common.black,
-            }}
+          Ajouter un fichier
+        </Typography>
+        <Container>
+          <FileButton
+            variant="contained"
+            sx={
+              file === undefined
+                ? { background: theme.palette.secondary.main }
+                : {
+                    background:
+                      "linear-gradient(90deg, rgba(250,209,38,1) 0%, rgba(255,84,79,1) 75%, rgba(255,84,79,1) 100%)",
+                  }
+            }
           >
-            Ajouter un fichier
-          </Typography>
-          <Container>
-            <FileButton
-              variant="contained"
-              sx={
-                file === undefined
-                  ? { background: theme.palette.secondary.main }
-                  : {
-                      background:
-                        "linear-gradient(90deg, rgba(250,209,38,1) 0%, rgba(255,84,79,1) 75%, rgba(255,84,79,1) 100%)",
-                    }
-              }
-            >
-              <LabelButton>
-                Déposer un fichier
-                <ButtonSVGContainer>
-                  <FileOpenIcon />
-                </ButtonSVGContainer>
-                <input
-                  hidden
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={(e) => {
-                    setFileInfo(e);
-                  }}
-                />
-              </LabelButton>
-            </FileButton>
-            {file && (
-              <ThrowFileButton onClick={deleteFile}>
-                <HighlightOffIcon color="primary" />
-              </ThrowFileButton>
-            )}
-          </Container>
-          <Container>
-            <Label>
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: -24,
-                  transform: "translateY(-50%)",
-                  height: 24,
-                  width: 24,
-                }}
-              >
-                {file && showLogo(file.type, 24)}
-              </Box>
-              <InputField
-                label="Nom du fichier"
-                variant="outlined"
-                type="text"
-                value={fileName}
-                disabled={!file}
+            <LabelButton>
+              Déposer un fichier
+              <ButtonSVGContainer>
+                <FileOpenIcon />
+              </ButtonSVGContainer>
+              <input
+                hidden
+                type="file"
+                ref={fileInputRef}
                 onChange={(e) => {
-                  setFileName(e.target.value);
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="start">
-                      <Typography variant="body1" color="textSecondary">
-                        {fileExtension}
-                      </Typography>
-                    </InputAdornment>
-                  ),
+                  setFileInfo(e);
                 }}
               />
-            </Label>
-          </Container>
-          <Container>
-            <ButtonConfirm onClick={handleUpload}>
-              Obtenir un lien
-              <ButtonSVGContainer>
-                <LinkIcon />
-              </ButtonSVGContainer>
-            </ButtonConfirm>
-          </Container>
-        </FileInfo>
-      </FileUploadContent>
+            </LabelButton>
+          </FileButton>
+          {file && (
+            <ThrowFileButton onClick={deleteFile}>
+              <HighlightOffIcon color="primary" />
+            </ThrowFileButton>
+          )}
+        </Container>
+        <Container>
+          <Label>
+            <InputField
+              label="Nom du fichier"
+              variant="outlined"
+              type="text"
+              value={fileName}
+              disabled={!file}
+              onChange={(e) => {
+                setFileName(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <Typography variant="body1" color="textSecondary">
+                      {fileExtension}
+                    </Typography>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Label>
+        </Container>
+        <Container>
+          <ButtonConfirm onClick={handleUpload}>
+            Obtenir un lien
+            <ButtonSVGContainer>
+              <LinkIcon />
+            </ButtonSVGContainer>
+          </ButtonConfirm>
+        </Container>
+      </FileInfo>
     </Slide>
   );
 }

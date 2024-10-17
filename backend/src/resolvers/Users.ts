@@ -95,7 +95,6 @@ export class UsersResolver {
         throw new Error("User not found");
       }
     } catch (e: any) {
-      console.log(e);
       if (e.message === "User not found") {
         throw new Error("User not found");
       } else {
@@ -151,7 +150,6 @@ export class UsersResolver {
       await newUser.save();
       await this.sendVerifCode(newUser.email);
     } catch (e) {
-      console.log(e);
       throw new Error(
         `Une erreur est survenue lors de la creation de l'utilisation / l'envoi du mail de confirmation`,
       );
@@ -278,7 +276,6 @@ export class UsersResolver {
     });
 
     if (!user) {
-      console.log("nada");
       return true;
     }
 

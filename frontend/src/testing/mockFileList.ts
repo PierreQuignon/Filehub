@@ -1,6 +1,6 @@
 import { getUserFiles } from "@/features/files/api/getUserFiles";
 import { mutationDeleteFile } from "@/features/files/api/mutationDeleteFile";
-import { queryMe } from "@/graphql/queryMe";
+import { queryMe } from "@/api/queryMe";
 
 const fileSet1 = [
   {

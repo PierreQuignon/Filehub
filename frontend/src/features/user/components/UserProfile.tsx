@@ -2,7 +2,7 @@ import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import { queryMe } from "@/graphql/queryMe";
+import { queryMe } from "@/api/queryMe";
 import { useMutation, useQuery } from "@apollo/client";
 import { mutationUpdatePassword } from "@/features/auth/api/mutationUpdatePassword";
 import { toast } from "react-toastify";

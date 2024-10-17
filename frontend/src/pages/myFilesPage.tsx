@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "@/components/layout/header";
-import FileList from "@/components/FileList";
 
-import UploadNewFile from "@/components/UploadNewFile";
+import UploadNewFile from "@/features/files/components/UploadNewFile";
 import { Stack, Typography, useTheme } from "@mui/material";
 import { MainContent } from ".";
+import FileList from "@/features/files/components/FileList";
 
 const MyFilesPage = () => {
   const theme = useTheme();
