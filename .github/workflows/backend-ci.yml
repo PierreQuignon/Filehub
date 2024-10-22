@@ -25,8 +25,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-      - name: Install dependencies
-        run: npm clean-install
+      # Install dependencies for frontend
+      - name: Install dependencies for frontend
+        run: |
+          cd frontend
+          npm clean-install
+
+      # Install dependencies for backend
+      - name: Install dependencies for backend
+        run: |
+          cd backend
+          npm clean-install
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
       - name: Release
