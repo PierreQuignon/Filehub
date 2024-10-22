@@ -1,4 +1,4 @@
-import { Button, Typography, InputAdornment, Box } from "@mui/material";
+import { Button, Typography, InputAdornment } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
@@ -10,17 +10,13 @@ import Slide from "@mui/material/Slide";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-import { useDropzone } from "react-dropzone";
 import { dataBaseFile } from "./FileUploaded";
 import { API_URL } from "../../../../config-url";
 import { InputField } from "@/features/user/components/UserProfile";
+import RectangleWrapper from "@/components/layout/Wrapper";
 
 interface fileUploadProps {
   setFileUploaded: (fun: dataBaseFile | undefined) => void;
-}
-interface FileInfoProps {
-  isDragAccept?: boolean;
-  isDragReject?: boolean;
 }
 
 const Container = styled.div`
@@ -79,20 +75,6 @@ export const FileUploadContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-export const FileInfo = styled.div<FileInfoProps>`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5vmin 12vmin;
-  border: 1px solid ${theme.palette.primary.light};
-  transition: border 0.24s ease-in-out;
-  border-radius: 5vmin;
-  width: 40vmin;
-  height: max(50vmin, fit-content);
 `;
 
 export const FileButton = styled(Button)`
@@ -210,7 +192,7 @@ function FileUpload({ setFileUploaded }: fileUploadProps): React.ReactNode {
         exit: 250,
       }}
     >
-      <FileInfo onClick={(e) => e.stopPropagation()}>
+      <RectangleWrapper>
         <Typography
           variant="h6"
           sx={{
@@ -285,7 +267,7 @@ function FileUpload({ setFileUploaded }: fileUploadProps): React.ReactNode {
             </ButtonSVGContainer>
           </ButtonConfirm>
         </Container>
-      </FileInfo>
+      </RectangleWrapper>
     </Slide>
   );
 }

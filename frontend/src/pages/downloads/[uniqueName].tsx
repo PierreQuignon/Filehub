@@ -1,9 +1,10 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import FileDownload from "@/components/FileDownload";
-import Header from "@/components/layout/header";
+
+import Header from "@/components/layout/Header";
 import { useRouter } from "next/router";
 import { MainContent } from "..";
+import FileDownload from "@/features/files/components/FileDownload";
 
 interface DownloadPageProps {
   uniqueName?: string;

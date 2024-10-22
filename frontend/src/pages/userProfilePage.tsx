@@ -1,5 +1,5 @@
 import UserProfile from "../features/user/components/UserProfile";
-import Header from "@/components/layout/header";
+import Header from "@/components/layout/Header";
 import { MainContent } from ".";
 import { queryMe } from "@/api/queryMe";
 import { useQuery } from "@apollo/client";

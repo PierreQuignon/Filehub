@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "@/components/layout/header";
+import Header from "@/components/layout/Header";
 
 import UploadNewFile from "@/features/files/components/UploadNewFile";
 import { Stack, Typography, useTheme } from "@mui/material";

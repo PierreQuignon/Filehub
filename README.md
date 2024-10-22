@@ -78,6 +78,6 @@ npm run check
 - Créer un composant layout pour remplacer le composant FileInfo dans FileUpload.tsx
 - Implémenter ce composant dans les pages suivantes :
   - Mes fichiers
-  - Upload d'un fichier
-  - Fichier uploadé
+  - Ajouter un fichier
+  - Votre fichier est à portée de clic
   - Info perso
