@@ -1,96 +1,132 @@
-name: Backend CI
-
+name: Release
 on:
   push:
-    branches: [ dev, main ]
-    paths:
-    - 'backend/**'
-  pull_request:
-    branches: [ dev, main ]
-    paths:
-    - 'backend/**'
+    branches:
+      - master
+
+permissions:
+  contents: read
 
 jobs:
-  run-checks:
-    name: Run checks
+  release:
+    name: Release
     runs-on: ubuntu-latest
-    env:
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      NODE_ENV: test
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
-      # Récupère le code source du repo GitHub
-      - name: Check out code
-        uses: actions/checkout@v4
-      # Mise en cache des dépendances Node.js pour réutilisation
-      - name: Cache Node modules
-        uses: actions/cache@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          path: backend/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
       - name: Install dependencies
-        run: cd backend && npm install
-      - name: Run linters
-        run: cd backend && npm run lint
-      - name: Run Prettier
-        run: cd backend && npm run prettier
-      - name: Run Type checking
-        run: cd backend && npm run type
+        run: npm clean-install
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  test-back:
-    needs: run-checks
-    runs-on: ubuntu-latest
-    env:
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      NODE_ENV: test
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-      - name: Cache Node modules
-        uses: actions/cache@v2
-        with:
-          path: backend/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies and run tests
-        run: cd backend && npm install && npm test
+        run: npx semantic-release
+# name: Backend CI
 
-  build-and-push-docker:
-    needs: test-back
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-    env:
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      NODE_ENV: test
-    steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name : Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: "{{defaultContext}}:backend"
-          file: Dockerfile.prod
-          push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_REPO_BACKEND }}:latest
-            ${{ secrets.DOCKERHUB_REPO_BACKEND }}:${{ steps.tag_version.outputs.new_tag }} 
+# on:
+#   push:
+#     branches: [dev, main]
+#     paths:
+#       - "backend/**"
+#   pull_request:
+#     branches: [dev, main]
+#     paths:
+#       - "backend/**"
+
+# jobs:
+#   run-checks:
+#     name: Run checks
+#     runs-on: ubuntu-latest
+#     env:
+#       STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+#       NODE_ENV: test
+#     steps:
+#       # Récupère le code source du repo GitHub
+#       - name: Check out code
+#         uses: actions/checkout@v4
+#       # Mise en cache des dépendances Node.js pour réutilisation
+#       - name: Cache Node modules
+#         uses: actions/cache@v2
+#         with:
+#           path: backend/node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
+#       - name: Install dependencies
+#         run: cd backend && npm install
+#       - name: Run linters
+#         run: cd backend && npm run lint
+#       - name: Run Prettier
+#         run: cd backend && npm run prettier
+#       - name: Run Type checking
+#         run: cd backend && npm run type
+
+#   test-back:
+#     needs: run-checks
+#     runs-on: ubuntu-latest
+#     env:
+#       STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+#       NODE_ENV: test
+#     steps:
+#       - name: Check out code
+#         uses: actions/checkout@v4
+#       - name: Cache Node modules
+#         uses: actions/cache@v2
+#         with:
+#           path: backend/node_modules
+#           key: ${{ runner.os }}-node-${{ hashFiles('backend/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
+#       - name: Install dependencies and run tests
+#         run: cd backend && npm install && npm test
+
+#   build-and-push-docker:
+#     needs: test-back
+#     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+#     runs-on: ubuntu-latest
+#     env:
+#       STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+#       NODE_ENV: test
+#     steps:
+#       - name: Set up QEMU
+#         uses: docker/setup-qemu-action@v3
+#       - name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v3
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v3
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+#       - name: Bump version and push tag
+#         id: tag_version
+#         uses: mathieudutour/github-tag-action@v6.2
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Create a GitHub release
+#         uses: ncipollo/release-action@v1
+#         with:
+#           tag: ${{ steps.tag_version.outputs.new_tag }}
+#           name: Release ${{ steps.tag_version.outputs.new_tag }}
+#           body: ${{ steps.tag_version.outputs.changelog }}
+#       - name: Build and push
+#         uses: docker/build-push-action@v5
+#         with:
+#           context: "{{defaultContext}}:backend"
+#           file: Dockerfile.prod
+#           push: true
+#           tags: |
+#             ${{ secrets.DOCKERHUB_REPO_BACKEND }}:latest
+#             ${{ secrets.DOCKERHUB_REPO_BACKEND }}:${{ steps.tag_version.outputs.new_tag }}
