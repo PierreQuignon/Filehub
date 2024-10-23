@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/PierreQuignon/Filehub/compare/v1.0.0...v1.0.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* essai de semantic release ([3e815cc](https://github.com/PierreQuignon/Filehub/commit/3e815ccab9eb91fe9cc682dd6ff93196c02586b6))
+
 # 1.0.0 (2024-10-23)
 
 
