@@ -2,7 +2,6 @@
   "branches": [
     "master"
   ],
-  "npmPublish": false,
   "verifyConditions": "@semantic-release/github",
   "analyzeCommits": {
     "preset": "angular"
@@ -23,8 +22,14 @@
       "semantic-release-version-bump",
       {
         "packageFiles": [
-          "frontend/package.json",
-          "backend/package.json"
+          {
+            "path": "frontend/package.json",
+            "type": "json"
+          },
+          {
+            "path": "backend/package.json",
+            "type": "json"
+          }
         ]
       }
     ],
