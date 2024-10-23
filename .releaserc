@@ -3,16 +3,6 @@
     "master"
   ],
   "npmPublish": false,
-  "verifyConditions": [
-    "@semantic-release/github",
-    "@semantic-release/npm"
-  ],
-  "analyzeCommits": {
-    "preset": "angular"
-  },
-  "generateNotes": {
-    "preset": "angular"
-  },
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -36,15 +26,6 @@
   ],
   "publish": [
     {
-      "path": "@semantic-release/github",
-      "assets": [
-        {
-          "path": "dist/**/*.js",
-          "label": "JavaScript distribution"
-        }
-      ]
-    },
-    {
       "path": "@semantic-release/npm",
       "pkgRoot": "backend"
     },
@@ -52,11 +33,5 @@
       "path": "@semantic-release/npm",
       "pkgRoot": "frontend"
     }
-  ],
-  "success": [
-    "@semantic-release/github"
-  ],
-  "fail": [
-    "@semantic-release/github"
   ]
 }
