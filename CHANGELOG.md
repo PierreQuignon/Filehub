@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/PierreQuignon/Filehub/compare/v1.0.6...v1.0.7) (2024-10-23)
+
+
+### Bug Fixes
+
+* essai de semantic release 6 ([6667756](https://github.com/PierreQuignon/Filehub/commit/6667756477177287d372a0087c17eb76b1a46580))
+
 ## [1.0.6](https://github.com/PierreQuignon/Filehub/compare/v1.0.5...v1.0.6) (2024-10-23)
 
 
