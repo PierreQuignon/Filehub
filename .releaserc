@@ -3,10 +3,7 @@
     "master"
   ],
   "npmPublish": false,
-  "verifyConditions": [
-    "@semantic-release/github",
-    "@semantic-release/npm"
-  ],
+  "verifyConditions": "@semantic-release/github",
   "analyzeCommits": {
     "preset": "angular"
   },
@@ -44,14 +41,6 @@
           "label": "JavaScript distribution"
         }
       ]
-    },
-    {
-      "path": "@semantic-release/npm",
-      "pkgRoot": "backend"
-    },
-    {
-      "path": "@semantic-release/npm",
-      "pkgRoot": "frontend"
     }
   ]
 }
