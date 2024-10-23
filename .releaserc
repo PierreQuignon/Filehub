@@ -19,7 +19,15 @@
         "changelogFile": "CHANGELOG.md"
       }
     ],
-    "@semantic-release/npm",
+    [
+      "semantic-release-version-bump",
+      {
+        "packageFiles": [
+          "frontend/package.json",
+          "backend/package.json"
+        ]
+      }
+    ],
     [
       "@semantic-release/git",
       {
