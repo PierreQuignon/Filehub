@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/PierreQuignon/Filehub/compare/v1.2.0...v1.3.0) (2024-10-23)
+
+
+### Features
+
+* try running the semantic release workflow 15 ([2558573](https://github.com/PierreQuignon/Filehub/commit/25585739ae8c9206d576e12d0ce08b21672c964a))
+
 # [1.2.0](https://github.com/PierreQuignon/Filehub/compare/v1.1.0...v1.2.0) (2024-10-23)
 
 
