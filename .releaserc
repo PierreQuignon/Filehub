@@ -16,15 +16,14 @@
     [
       "@semantic-release/changelog",
       {
-        "changelogFile": "docs/CHANGELOG.md"
+        "changelogFile": "CHANGELOG.md"
       }
     ],
     [
       "@semantic-release/git",
       {
         "assets": [
-          "dist/**/*.{js,css}",
-          "docs",
+          "CHANGELOG.md",
           "backend/package.json",
           "frontend/package.json"
         ],
